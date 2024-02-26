@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<br>
+<hr>
+{% for dog in dogs %}
+<ul>
+    <li>{{ dog.name }} - {{ dog.breed }}</li>
+</ul>
+
+{% endfor %}
+
+{% endblock content %}

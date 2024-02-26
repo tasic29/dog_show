@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<br>
+<hr>
+{% for sponsor in sponsors %}
+<ul>
+    <li>{{ sponsor.name }}</li>
+</ul>
+
+{% endfor %}
+
+{% endblock content %}

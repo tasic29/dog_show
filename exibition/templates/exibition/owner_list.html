@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<br>
+<hr>
+{% for owner in owners %}
+<ul>
+    <li>{{ owner.first_name }} {{ owner.last_name }}</li>
+</ul>
+
+{% endfor %}
+
+{% endblock content %}

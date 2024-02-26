@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<br>
+<hr>
+{% for show in shows %}
+<ul>
+    <li>{{ show.name }} - {{ show.location }}</li>
+</ul>
+
+{% endfor %}
+
+{% endblock content %}

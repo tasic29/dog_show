@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<br>
+<hr>
+{% for judge in judges %}
+
+<ul>
+    <li>{{ judge.first_name }} {{ judge.last_name }}</li>
+</ul>
+
+{% endfor %}
+
+{% endblock content %}
