@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Detail view for owner number {{owner.id}}</h2>
+    <hr>
+    <h5>{{ owner }} presents his dog:</h5>
+
+    <ul>
+    {% for dog in dogs %}
+        <li>{{ dog.name }} - {{ dog.breed }}</li>
+    {% endfor %}
+    </ul>
+{% endblock content %}

@@ -2,10 +2,12 @@
 {% block content %}
 <br>
 <hr>
-{% for breed in breeds %}
+{% for breed in breed_list %}
+
 <ul>
-    <li>{{ breed.name }}</li>
+    <li><a href="{% url 'exibition:breed-detail' breed.id %}">{{ breed.name }}</a></li>
 </ul>
+
 
 {% endfor %}
 

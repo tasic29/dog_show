@@ -2,9 +2,12 @@
 {% block content %}
 <br>
 <hr>
+<h5>List of dogs:</h5>
+<hr>
 {% for dog in dogs %}
+
 <ul>
-    <li>{{ dog.name }} - {{ dog.breed }}</li>
+    <li><a href="{% url 'exibition:dog-detail' dog.id %}">{{ dog.name }} - {{ dog.breed }}</a></li>
 </ul>
 
 {% endfor %}

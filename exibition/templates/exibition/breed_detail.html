@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Detail view for breed {{breed}}</h2>
+    <hr>
+    <h5>{{ breed.description|truncatewords:50 }}</h5>
+
+{% endblock content %}

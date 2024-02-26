@@ -2,9 +2,11 @@
 {% block content %}
 <br>
 <hr>
+<h5>List of owners:</h5>
+<hr>
 {% for owner in owners %}
 <ul>
-    <li>{{ owner.first_name }} {{ owner.last_name }}</li>
+<li><a href="{% url 'exibition:owner-detail' owner.id %}">{{ owner.first_name }} {{ owner.last_name }}</a></li>
 </ul>
 
 {% endfor %}
