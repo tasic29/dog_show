@@ -1,15 +1,25 @@
 {% extends "base.html" %}
 {% block content %}
+<button><a href="{% url 'exibition:dog-create' %}">Add new Dog</a></button>
 <br>
 <hr>
 <h5>List of dogs:</h5>
 <hr>
+<ul>
 {% for dog in dogs %}
 
-<ul>
-    <li><a href="{% url 'exibition:dog-detail' dog.id %}">{{ dog.name }} - {{ dog.breed }}</a></li>
-</ul>
+    <li>
+        <a href="{% url 'exibition:dog-detail' dog.id %}">{{ dog.name }} - {{ dog.breed }} </a>
+        <ul>
+            <li><a href="{% url 'exibition:dog-update' dog.id %}">Update Info</a></li>
+            <li><a href="{% url 'exibition:dog-delete' dog.pk %}">Delete Dog {{dog.name}} - {{dog.breed}}</a></li>
+        </ul> 
+    </li>
+
+
+
 
 {% endfor %}
+</ul>
 
 {% endblock content %}

@@ -1,8 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h2>Detail for dog number {{dog.id}}</h2>
+    <h2>Detail for dog number {{dog.id}}:</h2>
     <hr>
-    {{dog}}
+    <ul>
+        Name: {{dog.name}} - {{dog.breed}} - Gender: {{dog.gender}} - Age: {{dog.age}} - Weight {{dog.weight}}kg.
+    </ul>
 {% endblock content %}
 

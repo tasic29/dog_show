@@ -1,14 +1,23 @@
 {% extends "base.html" %}
 {% block content %}
+<button><a href="{% url 'exibition:owner-create' %}">Add new Owner</a></button>
 <br>
 <hr>
 <h5>List of owners:</h5>
 <hr>
-{% for owner in owners %}
 <ul>
-<li><a href="{% url 'exibition:owner-detail' owner.id %}">{{ owner.first_name }} {{ owner.last_name }}</a></li>
-</ul>
+{% for owner in owners %}
+<li>
+    <a href="{% url 'exibition:owner-detail' owner.id %}">{{ owner.first_name }} {{ owner.last_name }}</a>
+    <ul>
+        <li><a href="{% url 'exibition:owner-update' owner.id %}">Update Info for {{ owner.first_name }}</a></li>
+        <li><a href="{% url 'exibition:owner-delete' owner.id %}">Delete Owner '{{ owner.first_name }}'</a></li>
+    </ul>
+</li>
 
 {% endfor %}
+</ul>
+
+
 
 {% endblock content %}

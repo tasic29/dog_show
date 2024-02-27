@@ -1,14 +1,22 @@
 {% extends "base.html" %}
 {% block content %}
+<button><a href="{% url 'exibition:breed-create' %}">Add new Breed</a></button>
 <br>
 <hr>
-{% for breed in breed_list %}
-
+<h5>List of breeds:</h5>
+<hr>
 <ul>
-    <li><a href="{% url 'exibition:breed-detail' breed.id %}">{{ breed.name }}</a></li>
-</ul>
+{% for breed in object_list %}
+    <li>
+        <a href="{% url 'exibition:breed-detail' breed.id %}">{{ breed.name }}</a>
+        <ul>
+            <li><a href="{% url 'exibition:breed-update' breed.pk %}">Update Info</a></li>
+            <li><a href="{% url 'exibition:breed-delete' breed.pk %}">Delete Breed {{breed.name}}</a></li>
+        </ul>
+    </li>
 
 
 {% endfor %}
-
+</ul>
 {% endblock content %}
+
