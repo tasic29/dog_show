@@ -4,6 +4,8 @@
 <form method="POST">
     {% csrf_token %}
     <input type="submit" value='Confirm delete'>
+    
+    <button><a href="{% url 'exibition:dog-list' %}">Back</a></button>
 
 </form>
 

@@ -1,10 +1,11 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block content %}
     <h2>Detail for dog number {{dog.id}}:</h2>
     <hr>
     <ul>
-        Name: {{dog.name}} - {{dog.breed}} - Gender: {{dog.gender}} - Age: {{dog.age}} - Weight {{dog.weight}}kg.
+        <li>Name: {{ dog.name }} - {{ dog.breed }} - Gender: {{ dog.gender }} - Age: {{ dog.age }} - Weight {{ dog.weight }}kg.</li>
+        <img  src="{{ dog.image.url }}" alt="{{ dog.name }}" style="max-width: 300px;">
     </ul>
 {% endblock content %}
 

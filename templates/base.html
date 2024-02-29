@@ -11,6 +11,20 @@
    
 </head>
 <body>
+  {% if user.is_authenticated %}
+  <p>You are logged in as {{ user.username }} 
+    <form method="post" action="{% url 'core:logout' %}">
+      <button type="submit">Logout</button>
+      {% csrf_token %}
+  </form>
+  <br>
+
+
+  </p>
+  
+  {% else %}
+  <p>You are not logged in, please <a href="{% url 'core:login' %}">Login</a> or <a href="{% url 'core:create-user' %}">SignUp</a></p>
+{% endif %}
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="{% url 'exibition:home' %}">HOME</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -18,12 +32,13 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
-            <a class="nav-item nav-link" href="{% url 'exibition:owner-list' %}">Owner</a>
-            <a class="nav-item nav-link" href="{% url 'exibition:breed-list' %}">Breed</a>
-            <a class="nav-item nav-link" href="{% url 'exibition:dog-list' %}">Dog</a>
-            <a class="nav-item nav-link" href="{% url 'exibition:sponsor-list' %}">Sponsor</a>
             <a class="nav-item nav-link" href="{% url 'exibition:show-list' %}">Show</a>
-            <a class="nav-item nav-link" href="{% url 'exibition:judge-list' %}">Judge</a>
+            <a class="nav-item nav-link" href="{% url 'exibition:breed-list' %}">Breed</a>
+            <a class="nav-item nav-link" href="{% url 'exibition:owner-list' %}">Owners</a>
+            <a class="nav-item nav-link" href="{% url 'exibition:dog-list' %}">All Dogs</a>
+            <a class="nav-item nav-link" href="{% url 'exibition:sponsor-list' %}">Sponsors</a>
+            <a class="nav-item nav-link" href="{% url 'exibition:judge-list' %}">Judges</a>
+            <a class="nav-item nav-link" href="{% url 'core:users-list' %}">Users</a>
           </div>
         </div>
       </nav>

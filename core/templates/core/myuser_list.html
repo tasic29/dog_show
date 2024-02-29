@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<button><a href="{% url 'core:create-user' %}">Add new User</a></button>
+{% comment %} <button><a href="{% url 'core:login' %}">Login</a></button> {% endcomment %}
+<br>
+<hr>
+<h5>List of users:</h5>
+<hr>
+<ul>
+{% for user in users %}
+    <ul>
+        <li>{{ user.first_name }} {{ user.last_name }}</li>
+    </ul>
+{% endfor %}
+{% endblock content %}

@@ -3,16 +3,13 @@ from django.db import models
 
 
 class Owner(models.Model):
-    first_name = models.CharField(max_length=255)
-    last_name = models.CharField(max_length=255)
-    email = models.EmailField(unique=True)
-    phone = models.PositiveSmallIntegerField()
+    phone = models.PositiveSmallIntegerField(blank=True, null=True)
     address = models.CharField(max_length=255, blank=True, null=True)
     user = models.OneToOneField(
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
     def __str__(self) -> str:
-        return f'{self.first_name} {self.last_name}'
+        return f'{self.user.first_name} {self.user.last_name}'
 
 
 class Breed(models.Model):
@@ -30,7 +27,6 @@ class Dog(models.Model):
         ('F', 'Female')
     ]
     name = models.CharField(max_length=255)
-    breed = models.CharField(max_length=255)
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
     age = models.IntegerField()
     weight = models.PositiveSmallIntegerField()
@@ -39,6 +35,8 @@ class Dog(models.Model):
         Owner, on_delete=models.CASCADE, related_name='dogs')
     breed = models.ForeignKey(
         Breed, on_delete=models.PROTECT, related_name='dogs_breed')
+    image = models.ImageField(
+        upload_to='exibition/images', null=True, blank=True)
 
     def __str__(self) -> str:
         return f'{self.breed} - {self.name}'

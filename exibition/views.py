@@ -1,5 +1,8 @@
+from django.db.models.query import QuerySet
 from django.shortcuts import render
+from django.http import Http404
 from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import TemplateView, ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import Breed, Dog, Owner, Judge, Show, Sponsor
 
@@ -29,20 +32,26 @@ class OwnerDetailView(DetailView):
         return context
 
 
-class OwnerCreateView(CreateView):
+class OwnerCreateView(LoginRequiredMixin, CreateView):
     model = Owner
-    fields = ['first_name', 'last_name', 'email', 'phone', 'address', 'user']
+    fields = ['first_name', 'last_name', 'email',
+              'phone', 'address', 'user']
     success_url = reverse_lazy('exibition:thank-you')
 
+    # def dispatch(self, request, *args, **kwargs):
+    #     if not request.user.is_authenticated:
+    #         raise Http404("You must be logged in to access this page.")
+    #     return super().dispatch(request, *args, **kwargs)
 
-class OwnerUpdateView(UpdateView):
+
+class OwnerUpdateView(LoginRequiredMixin, UpdateView):
     model = Owner
     fields = fields = ['first_name', 'last_name',
                        'email', 'phone', 'address', 'user']
     success_url = reverse_lazy('exibition:owner-list')
 
 
-class OwnerDeleteView(DeleteView):
+class OwnerDeleteView(LoginRequiredMixin, DeleteView):
     model = Owner
     success_url = reverse_lazy('exibition:owner-list')
 
@@ -57,19 +66,19 @@ class BreedDetailView(DetailView):
     model = Breed
 
 
-class BreedCreateView(CreateView):
+class BreedCreateView(LoginRequiredMixin, CreateView):
     model = Breed
     fields = ['name', 'description']
     success_url = reverse_lazy('exibition:thank-you')
 
 
-class BreedUpdateView(UpdateView):
+class BreedUpdateView(LoginRequiredMixin, UpdateView):
     model = Breed
     fields = ['name', 'description']
     success_url = reverse_lazy('exibition:breed-list')
 
 
-class BreedDeleteView(DeleteView):
+class BreedDeleteView(LoginRequiredMixin, DeleteView):
     model = Breed
     success_url = reverse_lazy('exibition:breed-list')
 
@@ -84,21 +93,21 @@ class DogDetailView(DetailView):
     model = Dog
 
 
-class DogCreateView(CreateView):
+class DogCreateView(LoginRequiredMixin, CreateView):
     model = Dog
     fields = ['name', 'breed', 'gender', 'age',
-              'weight', 'color', 'owner', 'breed']
+              'weight', 'color', 'owner', 'breed', 'image']
     success_url = reverse_lazy('exibition:thank-you')
 
 
-class DogUpdateView(UpdateView):
+class DogUpdateView(LoginRequiredMixin, UpdateView):
     model = Dog
     fields = ['name', 'breed', 'gender', 'age',
-              'weight', 'color', 'owner', 'breed']
+              'weight', 'color', 'owner', 'breed', 'image']
     success_url = reverse_lazy('exibition:dog-list')
 
 
-class DogDeleteView(DeleteView):
+class DogDeleteView(LoginRequiredMixin, DeleteView):
     model = Dog
     fields = ['name', 'breed', 'gender', 'age',
               'weight', 'color', 'owner', 'breed']

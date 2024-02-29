@@ -17,11 +17,11 @@ class BreedAdmin(admin.ModelAdmin):
 
 @admin.register(Dog)
 class DogAdmin(admin.ModelAdmin):
-    list_display = ['id', 'name', 'breed', 'gender']
+    list_display = ['id', 'name', 'breed', 'gender', 'owner']
     autocomplete_fields = ['owner', 'breed']
     search_fields = ['breed']
 
 
 @admin.register(Owner)
 class OwnerAdmin(admin.ModelAdmin):
-    search_fields = ['first_name', 'last_name']
+    search_fields = ['user__first_name', 'user__last_name']

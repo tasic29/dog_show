@@ -8,10 +8,10 @@
 <ul>
 {% for owner in owners %}
 <li>
-    <a href="{% url 'exibition:owner-detail' owner.id %}">{{ owner.first_name }} {{ owner.last_name }}</a>
+    <a href="{% url 'exibition:owner-detail' owner.id %}">{{ owner.user.first_name }} {{ owner.user.last_name }}</a>
     <ul>
-        <li><a href="{% url 'exibition:owner-update' owner.id %}">Update Info for {{ owner.first_name }}</a></li>
-        <li><a href="{% url 'exibition:owner-delete' owner.id %}">Delete Owner '{{ owner.first_name }}'</a></li>
+        <li><a href="{% url 'exibition:owner-update' owner.id %}">Update Info for {{ owner.user.first_name }}</a></li>
+        <li><a href="{% url 'exibition:owner-delete' owner.id %}">Delete Owner '{{ owner.user.first_name }}'</a></li>
     </ul>
 </li>
 

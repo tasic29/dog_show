@@ -12,7 +12,7 @@
         <a href="{% url 'exibition:dog-detail' dog.id %}">{{ dog.name }} - {{ dog.breed }} </a>
         <ul>
             <li><a href="{% url 'exibition:dog-update' dog.id %}">Update Info</a></li>
-            <li><a href="{% url 'exibition:dog-delete' dog.pk %}">Delete Dog {{dog.name}} - {{dog.breed}}</a></li>
+            <li><a href="{% url 'exibition:dog-delete' dog.pk %}">Delete Dog: {{dog.name}} - {{dog.breed}}</a></li>
         </ul> 
     </li>
 
